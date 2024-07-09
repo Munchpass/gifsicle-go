@@ -21,7 +21,7 @@ var (
 	// Store only the changed portion of each image, and use transparency.
 	OPTIMIZE_LEVEL_TWO OptimizeLevel = "2"
 
-	// Try several optimization methods (usually slower, sometimes better results).
+	// Tries several optimization methods (usually slower, sometimes better results).
 	OPTIMIZE_LEVEL_THREE OptimizeLevel = "3"
 
 	// Preserve empty transparent frames (they are dropped by default).
