@@ -7,6 +7,7 @@ import (
 	"io"
 	"os/exec"
 	"runtime"
+	"strings"
 	"time"
 
 	"github.com/amenzhinsky/go-memexec"
@@ -52,7 +53,19 @@ func (b *EmbedBinWrapper) Timeout(timeout time.Duration) *EmbedBinWrapper {
 	return b
 }
 
-// Arg adds command line argument to run the binary with.
+/*
+Arg adds command line argument to run the binary with.
+
+Specify values only if you have an argument that is separated by a space.
+
+For instance, if you want `-o xyz`, do:
+
+	b.Arg("-o", "xyz")
+
+Otherwise, if you want `--output=xyz`, do:
+
+	b.Arg("--output=xyz")
+*/
 func (b *EmbedBinWrapper) Arg(name string, values ...string) *EmbedBinWrapper {
 	values = append([]string{name}, values...)
 	b.args = append(b.args, values...)
@@ -190,9 +203,9 @@ func (b *EmbedBinWrapper) Run(arg ...string) error {
 
 	arg = append(b.args, arg...)
 
-	// if b.debug {
-	// 	fmt.Println("BinWrapper.Run: " + b.Path() + " " + strings.Join(arg, " "))
-	// }
+	if b.debug {
+		fmt.Println("BinWrapper.Run: [executable_path] " + strings.Join(arg, " "))
+	}
 
 	var ctx context.Context
 	var cancel context.CancelFunc

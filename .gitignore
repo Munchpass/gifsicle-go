@@ -1,5 +1,2 @@
-.idea
-*.iml
-vendor
-source.jpg
-target.jpg
+testoutput
+.env
