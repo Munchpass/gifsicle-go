@@ -6,7 +6,7 @@ import (
 	"path"
 	"testing"
 
-	"github.com/Munchpass/gifsicle-go"
+	"github.com/munchpass/gifsicle-go"
 	"github.com/stretchr/testify/assert"
 )
 

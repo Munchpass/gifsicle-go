@@ -1,4 +1,4 @@
-module github.com/Munchpass/gifsicle-go
+module github.com/munchpass/gifsicle-go
 
 go 1.22.2
 

@@ -7,8 +7,8 @@ import (
 	"path"
 	"testing"
 
-	"github.com/Munchpass/gifsicle-go"
 	"github.com/brunoga/deep"
+	"github.com/munchpass/gifsicle-go"
 )
 
 func BenchmarkCompress(b *testing.B) {

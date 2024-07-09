@@ -6,7 +6,7 @@ import (
 	"image/gif"
 	"io"
 
-	"github.com/Munchpass/gifsicle-go/embedbinwrapper"
+	"github.com/munchpass/gifsicle-go/embedbinwrapper"
 )
 
 // For the -O[level] or --optimize[=level] arguments.

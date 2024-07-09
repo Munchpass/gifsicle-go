@@ -11,7 +11,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Munchpass/gifsicle-go"
+	"github.com/munchpass/gifsicle-go"
 )
 
 func writeGifToOutput(t *testing.T, gifBytes []byte, origGifPath string) {

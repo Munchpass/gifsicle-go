@@ -17,7 +17,7 @@ A Go wrapper around [`gifsicle`](https://www.lcdf.org/gifsicle/man.html) with bu
 We bundle the binaries through embeds, so all you need is a `go get`:
 
 ```bash
-go get github.com/Munchpass/gifsicle-go
+go get github.com/munchpass/gifsicle-go
 ```
 
 No need to have `gifsicle` pre-installed!

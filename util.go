@@ -10,7 +10,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/Munchpass/gifsicle-go/embedbinwrapper"
+	"github.com/munchpass/gifsicle-go/embedbinwrapper"
 )
 
 //go:embed bin/*
