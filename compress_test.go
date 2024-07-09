@@ -1,4 +1,4 @@
-package gifsiclego_test
+package gifsicle_test
 
 import (
 	"bytes"
@@ -8,7 +8,7 @@ import (
 	"path"
 	"testing"
 
-	gifsiclego "github.com/Munchpass/gifsicle-go"
+	"github.com/Munchpass/gifsicle-go"
 )
 
 func TestCompress(t *testing.T) {
@@ -23,12 +23,12 @@ func TestCompress(t *testing.T) {
 	}
 
 	var buf bytes.Buffer
-	err = gifsiclego.Compress(&buf, decodedGif, &gifsiclego.Options{
+	err = gifsicle.Compress(&buf, decodedGif, &gifsicle.Options{
 		Lossy:         80,
-		OptimizeLevel: gifsiclego.OPTIMIZE_LEVEL_THREE,
+		OptimizeLevel: gifsicle.OPTIMIZE_LEVEL_THREE,
 	})
 	if err != nil {
-		t.Fatalf("gifsiclego.Compress: %v\n", err)
+		t.Fatalf("gifsicle.Compress: %v\n", err)
 	}
 
 	// Need to re-read to get the original size

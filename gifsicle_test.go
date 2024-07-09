@@ -1,4 +1,4 @@
-package gifsiclego_test
+package gifsicle_test
 
 import (
 	"image/gif"
@@ -6,7 +6,7 @@ import (
 	"path"
 	"testing"
 
-	gifsiclego "github.com/Munchpass/gifsicle-go"
+	"github.com/Munchpass/gifsicle-go"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -42,11 +42,11 @@ func validateGifFiles(t *testing.T, sourceGifPath string, targetGifPath string) 
 }
 
 func TestGifsicleVersion(t *testing.T) {
-	gifsicle, err := gifsiclego.NewGifsicle()
+	g, err := gifsicle.NewGifsicle()
 	if !assert.Nil(t, err) {
 		t.FailNow()
 	}
-	v, err := gifsicle.Version()
+	v, err := g.Version()
 	if !assert.Nil(t, err) {
 		t.FailNow()
 	}
@@ -56,17 +56,17 @@ func TestGifsicleVersion(t *testing.T) {
 }
 
 func TestGifsicleRunFromFile(t *testing.T) {
-	gifsicle, err := gifsiclego.NewGifsicle()
+	g, err := gifsicle.NewGifsicle()
 	if !assert.Nil(t, err) {
 		t.FailNow()
 	}
 
 	sourceGif := path.Join("testfiles", "portrait_3mb.gif")
 	outputGif := path.Join("testoutput", "portrait_3mb_output.gif")
-	err = gifsicle.InputFile(sourceGif).
+	err = g.InputFile(sourceGif).
 		OutputFile(outputGif).
 		Lossy(80).
-		OptimizeLevel(gifsiclego.OPTIMIZE_LEVEL_THREE).
+		OptimizeLevel(gifsicle.OPTIMIZE_LEVEL_THREE).
 		Debug().
 		Run()
 	if !assert.Nil(t, err) {

@@ -1,4 +1,4 @@
-package gifsiclego
+package gifsicle
 
 import (
 	"errors"

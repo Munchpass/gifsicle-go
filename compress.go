@@ -1,4 +1,4 @@
-package gifsiclego
+package gifsicle
 
 import (
 	"fmt"
@@ -18,15 +18,15 @@ type Options struct {
 
 // Shortcut function to compress GIFs quickly and easily with gifsicle.
 func Compress(w io.Writer, g *gif.GIF, o *Options) error {
-	gifsicle, err := NewGifsicle()
+	gifsicleCli, err := NewGifsicle()
 	if err != nil {
 		return fmt.Errorf("NewGifsicle failed: %v", err)
 	}
 
 	if o != nil {
-		gifsicle.Lossy(o.Lossy)
-		gifsicle.OptimizeLevel(o.OptimizeLevel)
+		gifsicleCli.Lossy(o.Lossy)
+		gifsicleCli.OptimizeLevel(o.OptimizeLevel)
 	}
 
-	return gifsicle.InputGif(g).Output(w).Run()
+	return gifsicleCli.InputGif(g).Output(w).Run()
 }
