@@ -43,6 +43,10 @@ type Gifsicle struct {
 	lossy uint
 
 	optimizeLevel OptimizeLevel
+
+	// A number from 2-256 specifying the number of colors (makes a meaningful difference
+	// in compressed size)
+	numColors *uint
 }
 
 func NewGifsicle() (*Gifsicle, error) {
@@ -131,6 +135,22 @@ func (g *Gifsicle) Lossy(lossy uint) *Gifsicle {
 	return g
 }
 
+// Sets the --colors parameter.
+//
+// This parameter ranges from 2-256 (lower value -> more compression).
+func (g *Gifsicle) NumColors(numColors uint) *Gifsicle {
+	if numColors < 2 {
+		numColors = 2
+	}
+
+	if numColors > 256 {
+		numColors = 256
+	}
+
+	g.numColors = &numColors
+	return g
+}
+
 // Version returns gifsicle --version
 func (g *Gifsicle) Version() (string, error) {
 	return version(g.binWrapper)
@@ -140,6 +160,7 @@ func (g *Gifsicle) Version() (string, error) {
 func (g *Gifsicle) Reset() *Gifsicle {
 	g.lossy = 20
 	g.optimizeLevel = OPTIMIZE_LEVEL_ONE
+	g.numColors = nil
 	return g
 }
 
@@ -177,6 +198,10 @@ func (g *Gifsicle) Run() error {
 
 	g.binWrapper.Arg(fmt.Sprintf("--lossy=%d", g.lossy))
 	g.binWrapper.Arg(fmt.Sprintf("--optimize=%s", g.optimizeLevel))
+
+	if g.numColors != nil {
+		g.binWrapper.Arg("--colors", fmt.Sprintf("%d", *g.numColors))
+	}
 
 	output, err := g.getOutput()
 	if err != nil {
